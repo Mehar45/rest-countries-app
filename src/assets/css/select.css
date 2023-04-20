@@ -1,0 +1,73 @@
+.custom-select {
+  --border-radius: 10px;
+  --border-color: #777;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  width: 11em;
+  min-height: 1.5em;
+  padding: 1.2rem .8rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.custom-select::after {
+  --arrow-size: .4rem;
+  --arrow-thickness: 2px;
+
+  content: "";
+  display: inline-block;
+  color: #000;
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  border-bottom: var(--arrow-thickness) solid;
+  border-bottom-left-radius: 2px;
+  border-left: var(--arrow-thickness) solid;
+  rotate: 45deg;
+  transition: rotate 300ms ease-in-out;
+}
+
+.custom-select:has(.show)::after {
+  rotate: -45deg;
+}
+
+.value {
+  flex-grow: 1;
+}
+
+.options {
+  position: absolute;
+  top: calc(100% + .25rem);
+  left: 0;
+  display: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  max-height: 15rem;
+  width: 100%;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  z-index: 10;
+}
+
+.options.show {
+  display: block;
+}
+
+.option {
+  padding: .25rem .5rem;
+}
+
+.option.selected {
+  background-color: hsl(213 100% 60% / 0.8);
+  color: #fff;
+}
+
+.option:hover {
+  background-color: hsl(213 100% 50% / 0.8);
+  color: #fff;
+}
